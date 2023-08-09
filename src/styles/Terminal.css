@@ -1,0 +1,22 @@
+.terminal{
+    display: flex-end;
+    width: 100%;
+    background-color:black;
+    color:white;
+    font-family:'Arial Narrow';
+    font-size:14px;
+    height:25vh;
+    overflow-x:auto;
+    overflow-y:auto;
+    position: absolute;
+    bottom: 0;
+    
+    
+}
+/* .firstPart{
+    height:30vh;
+    width: 100%;
+    bottom: 0;
+    display: flex-end;
+    position: absolute;
+} */
