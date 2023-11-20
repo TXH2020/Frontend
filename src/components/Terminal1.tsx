@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import data from './credentials.json'
 var url:any;
 if(data.hostname!='' && data.username!='' && data.password!='')
-         url="http://localhost:8888?"+"hostname="+data.hostname+"&&username="+data.username+"&&password="+btoa(data.password)
+         url="http://localhost:8888/index?"+"hostname="+data.hostname+"&&username="+data.username+"&&password="+btoa(data.password)
 else
-	 url="http://localhost:8888"
+	 url="http://localhost:8888/index"
 export default function Terminal({c,sclr,st}:any){
   let i:number=0;
   function sendMessage() {
