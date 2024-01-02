@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import data from './credentials.json'
 var url:any;
 if(data.hostname!='' && data.username!='' && data.password!='')
-         url="http://localhost:8888/index?"+"hostname="+data.hostname+"&username="+data.username+"&password="+btoa(data.password)+"&command=tmux"
+         url="http://localhost:8888?"+"hostname="+data.hostname+"&username="+data.username+"&password="+btoa(data.password)+"&command=tmux"
 else
-	 url="http://localhost:8888/index?command=tmux"
+	 url="http://localhost:8888?command=tmux"
 export default function Terminal({c,sclr,st}:any){
   let i:number=0;
   function sendMessage() {
@@ -19,9 +19,9 @@ export default function Terminal({c,sclr,st}:any){
 				special_comm_flag=1;
 		var message:any='';
 		 if(special_comm_flag!==1)
-			message="!@#a1"+c+"!#@;echo "+id+":Command_Execution_Status=$?\r";
+			message=c+"#;echo #"+id+"#:Status=$?time-$((`date '+%s'`))_\r#"+id;
 		else{
-			message="!@#a1"+c+"\r";
+			message=c+"\r";
 			special_comm_flag=0;}
         const iframe = document.querySelector("iframe");
         iframe?.contentWindow?.postMessage(message, "*");
@@ -30,13 +30,11 @@ export default function Terminal({c,sclr,st}:any){
       try{
       var x=JSON.parse(event.data);
       if(x!=null){
-      if(Object.keys(x).length===2){
-        st(x.Execution_Time)
-        if(x.Command_Execution_Status==='0')
+        st(x.time)
+        if(x.status==='0')
         sclr("green");
     else
         sclr("red");
-    }
     }
       }
       catch(err){console.log(err);}});
