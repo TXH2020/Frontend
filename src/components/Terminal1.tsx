@@ -29,6 +29,13 @@ export default function Terminal({c,sclr,st}:any){
       window.addEventListener('message', function(event) {
       try{
       var x=JSON.parse(event.data);
+      const response = await fetch('http://localhost:3001/data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(x), // Convert data to JSON format
+      });
       if(x!=null){
         st(x.time)
         if(x.status==='0')
