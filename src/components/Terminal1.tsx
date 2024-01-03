@@ -26,7 +26,7 @@ export default function Terminal({c,sclr,st}:any){
         const iframe = document.querySelector("iframe");
         iframe?.contentWindow?.postMessage(message, "*");
       }
-      window.addEventListener('message', function(event) {
+      window.addEventListener('message', async function(event) {
       try{
       var x=JSON.parse(event.data);
       const response = await fetch('http://localhost:3001/data', {
