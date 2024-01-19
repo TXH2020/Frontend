@@ -4,6 +4,12 @@
 hostname
 ```
 ```bash
+sleep 5
+```
+```bash
+sleep 20
+```
+```bash
 hostname2
 ```	
 ```bash
